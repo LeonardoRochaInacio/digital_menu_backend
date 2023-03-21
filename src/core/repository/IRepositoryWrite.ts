@@ -1,6 +1,6 @@
-export interface IRepositoryWrite<T> 
+export interface IRepositoryWrite<T, Y> 
 {
-    create(item: T): Promise<boolean>;
-    update(id: string, item: T): Promise<boolean>;
-    delete(id: string): Promise<boolean>;
+    create(item: T): Promise<Y>;
+    update(item: T): Promise<Y>;
+    delete(id: string): Promise<Y>;
   }

@@ -1,7 +1,7 @@
 import { IRepositoryRead } from "../IRepositoryRead";
 import { IRepositoryWrite } from "../IRepositoryWrite";
 
-export class ReadWriteRepository<T> implements IRepositoryRead<T>, IRepositoryWrite<T>
+export class ReadWriteRepository<T, Y> implements IRepositoryRead<T>, IRepositoryWrite<T,Y>
 {
     public async getAll(): Promise<T[]>
     {
@@ -13,17 +13,17 @@ export class ReadWriteRepository<T> implements IRepositoryRead<T>, IRepositoryWr
         throw new Error("the method get need to be implemented!");
     }
     
-    public async create(item: T): Promise<boolean>
+    public async create(item: T): Promise<Y>
     {
         throw new Error("the method create need to be implemented!");
     }
 
-    public async update(id: string, item: T): Promise<boolean>
+    public async update(item: T): Promise<Y>
     {
         throw new Error("the method update need to be implemented!");
     }
     
-    public async delete(id: string): Promise<boolean>
+    public async delete(id: string): Promise<Y>
     {
         throw new Error("the method delete need to be implemented!");
     }

@@ -1,18 +1,18 @@
 import { IRepositoryWrite } from "../IRepositoryWrite";
 
-export class WriteRepository<T> implements IRepositoryWrite<T>
+export class WriteRepository<T, Y> implements IRepositoryWrite<T, Y>
 {
-    public async create(item: T): Promise<boolean>
+    public async create(item: T): Promise<Y>
     {
         throw new Error("the method create need to be implemented!");
     }
 
-    public async update(id: string, item: T): Promise<boolean>
+    public async update(item: T): Promise<Y>
     {
         throw new Error("the method update need to be implemented!");
     }
     
-    public async delete(id: string): Promise<boolean>
+    public async delete(id: string): Promise<Y>
     {
         throw new Error("the method delete need to be implemented!");
     }

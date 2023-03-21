@@ -4,7 +4,7 @@ import { ReadRepository } from '../repository/types/ReadRepository';
 import { ReadWriteRepository } from '../repository/types/ReadWriteRepository';
 import { WriteRepository } from '../repository/types/WriteRepository';
 
-export abstract class AbstractController<Repo extends ReadWriteRepository<any> | ReadRepository<any> | WriteRepository<any>, Return>
+export abstract class AbstractController<Repo extends ReadWriteRepository<any, any> | ReadRepository<any> | WriteRepository<any, any>, ResponseFormat, RequestFormat = any>
 {
     protected readonly Repository : Repo;
 
@@ -13,13 +13,13 @@ export abstract class AbstractController<Repo extends ReadWriteRepository<any> |
         this.Repository = Repository;
     }
 
-    protected abstract handleImplementation(): Promise<HttpResponse<Return>>
+    protected abstract handleImplementation(data?: RequestFormat): Promise<HttpResponse<ResponseFormat>>
 
-    public async handle(): Promise<HttpResponse<Return>>
+    public async handle(Data?: RequestFormat): Promise<HttpResponse<ResponseFormat>>
     {
         try
         {
-            return await this.handleImplementation();
+            return await this.handleImplementation(Data);
 
         }
         catch(error)

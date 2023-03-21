@@ -1,7 +1,7 @@
 export interface MenuItem
 {
-    id: number;
-    restaurante_id: number;
+    id?: number;
+    restaurant_id: number;
     title: string;
     description: string;
     price: number;
