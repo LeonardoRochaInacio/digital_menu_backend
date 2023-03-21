@@ -17,8 +17,3 @@ An API to connect to a database using a interfaced class for the controllers
 ## Authors
 - [@brunocecconi](https://www.github.com/brunocecconi)
 - [@leonardorochainacio](https://www.github.com/leonardorochainacio)
-
-
-## Badges
-
-![GitHub repo size](https://img.shields.io/github/repo-size/leonardorochainacio/digital_menu_backend)
