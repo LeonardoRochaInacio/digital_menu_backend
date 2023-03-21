@@ -1,7 +1,7 @@
 interface Error
 {
     GetErrorCode(): number;
-    GetErrorMessage(): string;
+    GetErrorMessage(realtimeinfo? : string): string;
 }
 
 export default Error;

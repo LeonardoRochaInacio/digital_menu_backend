@@ -6,7 +6,12 @@ class ErrorDefault implements Error
         return 1;
     }
 
-    GetErrorMessage(): string {
+    GetErrorMessage(realtimeinfo? : string): string {
+        if(realtimeinfo)
+        {
+            return "Error code " + this.GetErrorCode().toString() + " - " + realtimeinfo;
+        }
+
         return "Error code " + this.GetErrorCode().toString();
     }
 }

@@ -2,7 +2,7 @@ export interface MenuItem
 {
     id: number;
     restaurante_id: number;
-    name: string;
+    title: string;
     description: string;
     price: number;
 }

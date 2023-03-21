@@ -22,7 +22,7 @@ export class GetMenuItemsController implements IGetMenuItemsController
         }
         catch(error)
         {
-            return {statusCode: 200, body: new ErrorDefault().GetErrorMessage() };
+            return {statusCode: 200, body: new ErrorDefault().GetErrorMessage(error as string) };
         }
     }
 }
