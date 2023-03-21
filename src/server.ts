@@ -1,8 +1,8 @@
 import express, {Express, Request, Response} from "express";
 import * as dotenv from "dotenv";
-import { MySQLGetMenuItemRepository } from "./repositories/get_items/MySQLGetMenuItemRepository";
-import { GetMenuItemsController } from "./controllers/get_items/GetMenuItemsController";
-import { MenuItem } from "./models/menuitem";
+import { GetMenuItemsController } from "./controllers/GetMenuItemsController";
+import { MenuItem } from "./models/MenuItem";
+import { MySQLMenuItemsRepository } from "./repositories/MySQLMenuItemsRepository";
 
 dotenv.config();
 
@@ -12,12 +12,11 @@ const port = process.env.PORT;
 
 app.get('/', async (req, res) => {
     
-    const test_getmenuitems = new MySQLGetMenuItemRepository();
+    const test_getmenuitems = new MySQLMenuItemsRepository();
 
     const test_controller = new GetMenuItemsController(test_getmenuitems);
 
     const result : any = await test_controller.handle();
-
     res.send(result);
 });
 

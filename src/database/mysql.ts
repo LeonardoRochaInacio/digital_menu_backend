@@ -1,4 +1,4 @@
-import mysql, {Connection, ConnectionOptions} from "mysql2/promise";
+import mysql, {Connection, ConnectionOptions, FieldPacket, OkPacket, ResultSetHeader, RowDataPacket} from "mysql2/promise";
 
 export class MySQLClient 
 {
@@ -7,7 +7,7 @@ export class MySQLClient
     
     private constructor() 
     {
-        this.db = this.GetConnection();
+        this.db = this.GetConnection();        
     }
 
     public static GetInstance(): MySQLClient
@@ -41,14 +41,38 @@ export class MySQLClient
         const conn: mysql.Connection = await this.db; 
         if(conn)
         {
-            conn.end();
+            conn.destroy();
         }
     }
 
-    public async Query(_query: string)
+    public async Query(_query: string, _values?: any) : Promise<[RowDataPacket[][] | RowDataPacket[] | OkPacket | OkPacket[] | ResultSetHeader, FieldPacket[]]>
     {
-        const conn: mysql.Connection = await this.GetConnection(); 
-        return conn.query(_query);
+            const conn: mysql.Connection = await this.GetConnection(); 
+            let ret: Promise<any> = undefined as unknown as Promise<any>;
+
+            try
+            {
+                if(_values)
+                {
+                    ret = conn.query(_query, _values);
+                }
+                else
+                {
+                    ret =  conn.query(_query);
+                }
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+            finally
+            {
+                this.CloseConnection();
+                this.db = undefined as unknown as Promise<any>;
+            }
+
+            return ret;
+            
     }
 
 };
