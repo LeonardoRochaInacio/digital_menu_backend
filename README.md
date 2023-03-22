@@ -4,16 +4,35 @@
 An API to connect to a database using a interfaced class for the controllers
 ## API Reference
 
-#### Get all items
+#### Get all menu items
 
 ```http
-  GET /
+  GET /menuitem
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `no parameter` | `no type` | just for test, it return all the menu items |
+| `no parameter` | `no type` | no parameter required |
 
+#### Get menu item by id
+
+```http
+  GET /menuitem/:id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `number` | id of required menu item |
+
+#### Get all menu items of a restaurant
+
+```http
+  GET /menuitem/restaurant/:restaurant_id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `restaurant_id` | `number` | restaurant id |
 
 ## Run Locally
 
