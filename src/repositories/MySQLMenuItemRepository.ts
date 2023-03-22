@@ -1,10 +1,11 @@
 import { ResultSetHeader } from "mysql2";
-import { ReadWriteRepository } from "../core/repository/types/ReadWriteRepository";
+import { IMenuItemRepository } from "../repositories/interfaces/IMenuItemRepository";
 import { MySQLClient } from "../database/MySQL";
 import { MenuItem } from "../models/MenuItem";
 
-export class MySQLMenuItemsRepository extends ReadWriteRepository<MenuItem, ResultSetHeader>
+export class MySQLMenuItemRepository extends IMenuItemRepository<MenuItem, ResultSetHeader>
 {
+    
     public async getAll()
     {
         const [rows] = await MySQLClient.GetInstance().Query("SELECT * FROM menuitems");
@@ -37,4 +38,10 @@ export class MySQLMenuItemsRepository extends ReadWriteRepository<MenuItem, Resu
         return rows as unknown as ResultSetHeader;
     }
     
+    public async getMenuItemsByRestaurantID(restaurant_id: number) 
+    {
+        const [rows] = await MySQLClient.GetInstance().Query("SELECT * FROM menuitems WHERE restaurant_id = ?", [restaurant_id]);
+        return rows as unknown as Promise<MenuItem[]>;
+    }
+
 }
