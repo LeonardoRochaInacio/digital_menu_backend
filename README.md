@@ -72,10 +72,6 @@ To run tests, run the following command
 
 ## Tech Stack
 
-**Client non-admin:** React, TailwindCSS
-
-**Client admin:** Electron, TailwindCSS
-
 **Server:** NodeJS, Express, Jest
 
 **Implemented BD:** MySQL
