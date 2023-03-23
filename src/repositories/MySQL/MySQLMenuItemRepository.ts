@@ -1,7 +1,7 @@
 import { ResultSetHeader } from "mysql2";
-import { IMenuItemRepository } from "../repositories/interfaces/IMenuItemRepository";
-import { MySQLClient } from "../database/MySQL";
-import { MenuItem } from "../models/MenuItem";
+import { IMenuItemRepository } from "../interfaces/IMenuItemRepository";
+import { MySQLClient } from "../../database/MySQL";
+import { MenuItem } from "../../models/MenuItem";
 
 export class MySQLMenuItemRepository extends IMenuItemRepository<MenuItem, ResultSetHeader>
 {

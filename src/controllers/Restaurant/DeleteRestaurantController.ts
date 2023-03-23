@@ -1,8 +1,8 @@
 import { ResultSetHeader } from "mysql2";
 import { AbstractController } from "../../core/controller/AbstractController";
-import { MySQLMenuItemRepository } from "../../repositories/MySQL/MySQLMenuItemRepository";
+import { MySQLRestaurantRepository } from "../../repositories/MySQL/MySQLRestaurantRepository";
 
-export class DeleteMenuItemController extends AbstractController<MySQLMenuItemRepository, ResultSetHeader, number>
+export class DeleteRestaurantController extends AbstractController<MySQLRestaurantRepository, ResultSetHeader, number>
 {
     async handleImplementation(id: number)
     {

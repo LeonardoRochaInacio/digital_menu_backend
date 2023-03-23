@@ -8,5 +8,6 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use("/user", require("./routes/UserRoute"));
 app.use("/menuitem", require("./routes/MenuItemRoute"));
+app.use("/restaurant", require("./routes/RestaurantRoute"));
 
 app.listen(port, () => console.log(`listing server on ${port}!`));

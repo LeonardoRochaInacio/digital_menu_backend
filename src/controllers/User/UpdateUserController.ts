@@ -1,11 +1,11 @@
 import { ResultSetHeader } from "mysql2";
 import { AbstractController } from "../../core/controller/AbstractController";
-import { MenuItem } from "../../models/MenuItem";
-import { MySQLMenuItemRepository } from "../../repositories/MySQLMenuItemRepository";
+import { User } from "../../models/User";
+import { MySQLUserRepository } from "../../repositories/MySQL/MySQLUserRepository";
 
-export class UpdateMenuItemController extends AbstractController<MySQLMenuItemRepository, ResultSetHeader, MenuItem>
+export class UpdateUserController extends AbstractController<MySQLUserRepository, ResultSetHeader, User>
 {
-    async handleImplementation(data: MenuItem)
+    async handleImplementation(data: User)
     {
         if(!data.id) throw Error("Undefined id on update");
         const res: ResultSetHeader = await this.Repository.update(data);

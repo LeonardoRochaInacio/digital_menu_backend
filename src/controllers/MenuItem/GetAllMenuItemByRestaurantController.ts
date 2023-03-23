@@ -1,6 +1,6 @@
 import { AbstractController } from "../../core/controller/AbstractController";
 import { MenuItem } from "../../models/MenuItem";
-import { MySQLMenuItemRepository } from "../../repositories/MySQLMenuItemRepository";
+import { MySQLMenuItemRepository } from "../../repositories/MySQL/MySQLMenuItemRepository";
 
 export class GetAllMenuItemByRestaurantController extends AbstractController<MySQLMenuItemRepository, MenuItem[], number>
 {
