@@ -2,98 +2,54 @@ const {generateTemplateFiles} = require('generate-template-files');
 
 generateTemplateFiles([
     {
-        option: 'Generate Repository Interface + Empty model + MySQL Repository + CRUD Controllers + Routes',
+        option: 'Generate repository interface + empty model + MySQL repository',
         defaultCase: '(pascalCase)',
         entry: {
-            folderPath: './tools/templates/Repo-MySQL-Controllers',
+            folderPath: './tools/templates/Repo-MySQL-Model',
         },
-        stringReplacers: ['__modelname__'],
+        stringReplacers: [{ question: 'Insert database repository model name: ', slot: '__modelname__'}],
+        output: {
+            path: './src/',
+            pathAndFileNameDefaultCase: '(pascalCase)',
+            overwrite: true
+        },
+        onComplete: (results) => {
+            console.log("Generate repository interface + empty model + MySQL repository - Template successfully created!")
+            //console.log(`results`, results);
+        },
+    },
+
+    {
+        option: 'Generate controller',
+        defaultCase: '(pascalCase)',
+        entry: {
+            folderPath: './tools/templates/Controller',
+        },
+        stringReplacers: [{ question: 'Insert database repository model name: ', slot: '__modelname__'}, { question: 'Insert the controller name: ', slot: '__controllername__'}],
         output: {
             path: './src/',
             pathAndFileNameDefaultCase: '(pascalCase)',
         },
         onComplete: (results) => {
-            console.log(`results`, results);
+            console.log("Generate controller + route - Template successfully created!")
+            //console.log(`results`, results);
         },
     },
 
     {
-        option: 'Generate Controllers',
+        option: 'Generate route',
         defaultCase: '(pascalCase)',
         entry: {
-            folderPath: './tools/templates/Repo-MySQL-Controllers/controllers',
+            folderPath: './tools/templates/Route',
         },
-        stringReplacers: ['__modelname__'],
-        output: {
-            path: './src/controllers',
-            pathAndFileNameDefaultCase: '(pascalCase)',
-        },
-        onComplete: (results) => {
-            console.log(`results`, results);
-        },
-    },
-
-    {
-        option: 'Generate Model',
-        defaultCase: '(pascalCase)',
-        entry: {
-            folderPath: './tools/templates/Repo-MySQL-Controllers/models',
-        },
-        stringReplacers: ['__modelname__'],
-        output: {
-            path: './src/models',
-            pathAndFileNameDefaultCase: '(pascalCase)',
-        },
-        onComplete: (results) => {
-            console.log(`results`, results);
-        },
-    },
-
-    {
-        option: 'Generate Repository',
-        defaultCase: '(pascalCase)',
-        entry: {
-            folderPath: './tools/templates/Repo-MySQL-Controllers/repositories',
-        },
-        stringReplacers: ['__modelname__'],
-        output: {
-            path: './src/repositories',
-            pathAndFileNameDefaultCase: '(pascalCase)',
-        },
-        onComplete: (results) => {
-            console.log(`results`, results);
-        },
-    },
-
-    {
-        option: 'Generate Routes',
-        defaultCase: '(pascalCase)',
-        entry: {
-            folderPath: './tools/templates/Repo-MySQL-Controllers/routes',
-        },
-        stringReplacers: ['__modelname__'],
-        output: {
-            path: './src/routes/',
-            pathAndFileNameDefaultCase: '(pascalCase)',
-        },
-        onComplete: (results) => {
-            console.log(`results`, results);
-        },
-    },
-
-    {
-        option: 'Generate Custom Controller + Route',
-        defaultCase: '(pascalCase)',
-        entry: {
-            folderPath: './tools/templates/SingleController',
-        },
-        stringReplacers: ['__modelname__', '__controllername__', '__responseType__', '__requestType__'],
+        stringReplacers: [{ question: 'Insert database repository model name: ', slot: '__modelname__'}, { question: 'Insert the controller that controls the route: ', slot: '__controllername__'}, { question: 'Insert the route name: ', slot: '__routename__'}],
         output: {
             path: './src/',
             pathAndFileNameDefaultCase: '(pascalCase)',
         },
         onComplete: (results) => {
-            console.log(`results`, results);
+            console.log("Generate controller + route - Template successfully created!")
+            //console.log(`results`, results);
         },
     },
 ]);

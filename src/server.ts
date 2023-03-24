@@ -11,6 +11,6 @@ app.use(cors({origin: '*'}));
 app.use("/user", require("./routes/UserRoute"));
 //app.use("/menuitem", require("./routes/MenuItemRoute"));
 //app.use("/restaurant", require("./routes/RestaurantRoute"));
-app.use("/login", require("./routes/LoginRoute"));
+
 
 app.listen(port, () => console.log(`listening server on ${port}!`));

@@ -12,7 +12,7 @@ export class WriteRepository<T, Y> implements IRepositoryWrite<T, Y>
         throw new Error("the method update need to be implemented!");
     }
     
-    public async delete(id: string): Promise<Y>
+    public async delete(id: number): Promise<Y>
     {
         throw new Error("the method delete need to be implemented!");
     }

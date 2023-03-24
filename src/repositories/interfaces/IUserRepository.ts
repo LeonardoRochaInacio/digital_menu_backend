@@ -2,5 +2,6 @@ import { ReadWriteRepository } from "../../core/repository/types/ReadWriteReposi
 
 export abstract class IUserRepository<T, Y> extends ReadWriteRepository<T, Y>
 {
-    public abstract getUserByName(customParameter: string) : Promise<T>;
+    public abstract getUserByName(username: string) : any;
+    public abstract updateLastLoginTime(id: number, newValue: number) : any;
 }

@@ -7,7 +7,7 @@ export class ReadRepository<T> implements IRepositoryRead<T>
         throw new Error("the method getAll need to be implemented!");
     }
 
-    public async get(id: string) :  Promise<T>
+    public async get(id: number) :  Promise<T>
     {
         throw new Error("the method get need to be implemented!");
     }
