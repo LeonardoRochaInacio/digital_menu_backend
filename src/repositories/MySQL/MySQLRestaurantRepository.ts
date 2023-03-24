@@ -20,7 +20,7 @@ export class MySQLRestaurantRepository extends IRestaurantRepository<Restaurant,
     
     public async create(item: Restaurant)
     {
-        const [rows] = await MySQLClient.GetInstance().Query("INSERT INTO restaurants (p1) VALUES (?)", 
+        const [rows] = await MySQLClient.GetInstance().Query("INSERT INTO restaurants (restaurant_name) VALUES (?)", 
         [item.restaurant_name]);
         return rows as unknown as ResultSetHeader;
     }

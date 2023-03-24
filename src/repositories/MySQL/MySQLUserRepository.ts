@@ -20,15 +20,15 @@ export class MySQLUserRepository extends IUserRepository<User, ResultSetHeader>
     
     public async create(item: User)
     {
-        const [rows] = await MySQLClient.GetInstance().Query("INSERT INTO users (username, password, role) VALUES (?, ?, ?)", 
-        [item.username, item.password, item.role]);
+        const [rows] = await MySQLClient.GetInstance().Query("INSERT INTO users (username, password, email, role, creation_date, last_login_date) VALUES (?, ?, ?, ?, ?, ?)", 
+        [item.username, item.password, item.email, item.role, item.creation_date, item.last_login_date]);
         return rows as unknown as ResultSetHeader;
     }
 
     public async update(item: User)
     {
-        const [rows] = await MySQLClient.GetInstance().Query("UPDATE users SET username = ?, password = ?, role = ? WHERE id = ?", 
-        [item.username, item.password, item.role, item.id]);
+        const [rows] = await MySQLClient.GetInstance().Query("UPDATE users SET username = ?, password = ?, email= ?, role = ?, creation_date = ?, last_login_date = ? WHERE id = ?", 
+        [item.username, item.password, item.email, item.role, item.creation_date, item.last_login_date, item.id]);
         return rows as unknown as ResultSetHeader;
     }
     
@@ -38,10 +38,10 @@ export class MySQLUserRepository extends IUserRepository<User, ResultSetHeader>
         return rows as unknown as ResultSetHeader;
     }
     
-    // Example of a custom parameter from the Interface
+
     public async getUserByName(username: string) 
     {
-        const [row] = await MySQLClient.GetInstance().Query("SELECT id, username, role FROM users WHERE username = ?", [username]);
+        const [row] = await MySQLClient.GetInstance().Query("SELECT id, username, password, email, creation_date, last_login_date, role FROM users WHERE username = ?", [username]);
         return (row as any)[0] as unknown as Promise<User>;
     }
 

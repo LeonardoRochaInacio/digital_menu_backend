@@ -54,7 +54,7 @@ export class MySQLClient
             {
                 if(_values)
                 {
-                    ret = conn.query(_query, _values);
+                    ret = conn.query(_query, _values);    
                 }
                 else
                 {

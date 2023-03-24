@@ -80,4 +80,20 @@ generateTemplateFiles([
             console.log(`results`, results);
         },
     },
+
+    {
+        option: 'Generate Custom Controller + Route',
+        defaultCase: '(pascalCase)',
+        entry: {
+            folderPath: './tools/templates/SingleController',
+        },
+        stringReplacers: ['__modelname__', '__controllername__', '__responseType__', '__requestType__'],
+        output: {
+            path: './src/',
+            pathAndFileNameDefaultCase: '(pascalCase)',
+        },
+        onComplete: (results) => {
+            console.log(`results`, results);
+        },
+    },
 ]);
