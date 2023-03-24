@@ -2,6 +2,5 @@ import { ReadWriteRepository } from "../../core/repository/types/ReadWriteReposi
 
 export abstract class IRestaurantRepository<T, Y> extends ReadWriteRepository<T, Y>
 {
-    // Put here your customs actions from data base like this below:
-    // public getRestaurantByCustomParameter(customParameter: number) : Promise<T[]>;
+    //public abstract getRestaurantByCustomParameter(customParameter: number) : Promise<T[]>;
 }

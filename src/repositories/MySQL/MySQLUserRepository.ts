@@ -39,10 +39,10 @@ export class MySQLUserRepository extends IUserRepository<User, ResultSetHeader>
     }
     
     // Example of a custom parameter from the Interface
-    //public async getUserByCustomParameter(customParameter: number) 
-    //{
-    //    const [rows] = await MySQLClient.GetInstance().Query("SELECT * FROM User WHERE customParameter = ?", [customParameter]);
-    //    return rows as unknown as Promise<User[]>;
-    //}
+    public async getUserByName(username: string) 
+    {
+        const [row] = await MySQLClient.GetInstance().Query("SELECT id, username, role FROM users WHERE username = ?", [username]);
+        return (row as any)[0] as unknown as Promise<User>;
+    }
 
 }
