@@ -12,7 +12,7 @@ export class MySQL__modelname__Repository extends I__modelname__Repository<__mod
         return rows as unknown as Promise<__modelname__[]>;
     }
 
-    public async get(id: string)
+    public async get(id: number)
     {
         const [rows] = await MySQLClient.GetInstance().Query("SELECT * FROM __modelname__ WHERE id = ?", [id]);
         return (rows as any)[0] as unknown as Promise<__modelname__>;
@@ -32,7 +32,7 @@ export class MySQL__modelname__Repository extends I__modelname__Repository<__mod
         return rows as unknown as ResultSetHeader;
     }
     
-    public async delete(id: string)
+    public async delete(id: number)
     {
         const [rows] = await MySQLClient.GetInstance().Query("DELETE FROM __modelname__ WHERE id = ?", [id]);
         return rows as unknown as ResultSetHeader;
