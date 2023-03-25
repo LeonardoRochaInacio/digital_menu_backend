@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import { AbstractController } from "../../core/controller/AbstractController";
 import Utils from "../../core/utils/utils";
 import { User } from "../../models/User";
@@ -10,11 +11,16 @@ interface LoginParameters
     password: string;
 }
 
+export interface TokenedUser extends User
+{
+    token?: string;
+}
+
 export class LoginController extends AbstractController<MySQLUserRepository>
 {
     async handleImplementation(Data: LoginParameters)
     {
-        const inDBuser: User = await this.Repository.getUserByName(Data.username);
+        const inDBuser: TokenedUser = await this.Repository.getUserByName(Data.username);
 
         if(!inDBuser)
         {
@@ -36,6 +42,9 @@ export class LoginController extends AbstractController<MySQLUserRepository>
         {
             return {statusCode: 401, message: "Something went wrong when trying to get the user id."};
         }
+
+        const token = jwt.sign({id: inDBuser.id, username: inDBuser.username, role: inDBuser.role}, process.env.SECRET_KEY as string , {expiresIn: '2 days'});
+        inDBuser.token = token;
 
         return {statusCode: 200, body: inDBuser, message: "Sucessfully logged-in!"};
     }

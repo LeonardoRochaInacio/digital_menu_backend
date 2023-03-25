@@ -22,7 +22,7 @@ export class RegisterController extends AbstractController<MySQLUserRepository>
         {
             return {statusCode: 400, message: "The username must be at least 8 characters long."};
         }
-        else if(Data.role != "basic")
+        else if(Data.role as unknown as string != "basic")
         {
             return {statusCode: 400, message: "You don't have the correct permission to registrer an user with that role."};
         }
