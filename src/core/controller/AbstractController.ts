@@ -25,7 +25,8 @@ export abstract class AbstractController<Repo extends ReadWriteRepository<any, a
         }
         catch(error)
         {
-            return { statusCode: 500, message: error as string};
+            console.log(error);
+            return { statusCode: 500, message: "Internal error!"};
         }
     }
 

@@ -56,7 +56,8 @@ export function auth(Role: UserRole = UserRole.basic)
                 {
                     throw new Error("Unauthorized role for this route!");
                 }
-
+                
+                Request.body = body;
                 next();
             }
             else

@@ -29,6 +29,7 @@ generateTemplateFiles([
         output: {
             path: './src/',
             pathAndFileNameDefaultCase: '(pascalCase)',
+            overwrite: true
         },
         onComplete: (results) => {
             console.log("Generate controller + route - Template successfully created!")
@@ -46,6 +47,7 @@ generateTemplateFiles([
         output: {
             path: './src/',
             pathAndFileNameDefaultCase: '(pascalCase)',
+            overwrite: true
         },
         onComplete: (results) => {
             console.log("Generate controller + route - Template successfully created!")
