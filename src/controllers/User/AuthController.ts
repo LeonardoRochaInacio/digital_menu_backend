@@ -2,6 +2,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { AbstractController } from "../../core/controller/AbstractController";
 import { User, UserRole } from "../../models/User";
 import { MySQLUserRepository } from "../../repositories/MySQL/MySQLUserRepository";
+import APIReturnState from "../../core/utils/apiReturnState";
 
 export interface LoginJwtPayload extends JwtPayload
 {
@@ -26,6 +27,6 @@ export class AuthController extends AbstractController<MySQLUserRepository>
             return {statusCode: 401, message: "Unauthorized role for this route!"};
         }
 
-        return {statusCode: 200, body: inDBuser, message: "Sucessfully logged-in!"};
+        return {statusCode: 200, body: inDBuser, message: APIReturnState.success()};
     }
 }

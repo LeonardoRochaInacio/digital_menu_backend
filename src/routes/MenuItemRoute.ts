@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
 import { MySQLMenuItemRepository } from "../repositories/MySQL/MySQLMenuItemRepository";
-import { MyMenuItemsController } from "../controllers/MenuItem/MyMenuItemsController";
+import { GetRestaurantMenuItemsController } from "../controllers/MenuItem/GetRestaurantMenuItemsController";
 import { UserRole } from "../models/User";
 import { auth } from "../middlewares/Auth";
 
@@ -9,11 +9,10 @@ const _MenuItemRepository = new MySQLMenuItemRepository();
 
 router.get('/:restaurant_id', async (Request: Request, Response: Response) => 
 {
-    const Controller = new MyMenuItemsController(_MenuItemRepository);
+    const Controller = new GetRestaurantMenuItemsController(_MenuItemRepository);
     const Result = await Controller.handle(Request.params.restaurant_id);
     Response.send(Result);
 });
-
 
 /*
 router.post('/', async (Request: Request, Response: Response) => 
