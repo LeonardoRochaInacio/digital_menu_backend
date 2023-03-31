@@ -13,4 +13,4 @@ app.use("/menu", require("./routes/MenuItemRoute"));
 app.use("/restaurant", require("./routes/RestaurantRoute"));
 
 
-app.listen(port, () => console.log(`listening server on ${port}!`));
+app.listen(3000, () => console.log(`listening server on ${port}!`));

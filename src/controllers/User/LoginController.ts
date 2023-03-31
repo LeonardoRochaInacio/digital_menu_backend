@@ -46,6 +46,8 @@ export class LoginController extends AbstractController<MySQLUserRepository>
         const token = jwt.sign({id: inDBuser.id, username: inDBuser.username, role: inDBuser.role}, process.env.SECRET_KEY as string , {expiresIn: '2 days'});
         inDBuser.token = token;
 
+        delete (inDBuser as any).password;
+
         return {statusCode: 200, body: inDBuser, message: "Sucessfully logged-in!"};
     }
 }
