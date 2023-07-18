@@ -160,4 +160,6 @@ export abstract class IUserRepository<T, Y> extends ReadWriteRepository<T, Y>
 
 ## Authors
 - [@brunocecconi](https://www.github.com/brunocecconi)
+- [@LeonardoRochaInacio](https://www.github.com/LeonardoRochaInacio)
+
 
